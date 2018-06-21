@@ -67,14 +67,14 @@ public class DefaultTaskDefinitionService implements TaskDefinitionService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void createPairFrom(@NotNull TaskDefinition taskDefinition) {
-        taskDefinitionRepository.saveAndFlush(taskDefinition);
+        taskDefinition = taskDefinitionRepository.saveAndFlush(taskDefinition);
         taskDefinitionMirrorRepository.saveAndFlush(TaskDefinitionMirror.from(taskDefinition));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void createPairFrom(@NotNull TaskDefinitionMirror taskDefinitionMirror) {
-        taskDefinitionMirrorRepository.saveAndFlush(taskDefinitionMirror);
+        taskDefinitionMirror = taskDefinitionMirrorRepository.saveAndFlush(taskDefinitionMirror);
         taskDefinitionRepository.saveAndFlush(TaskDefinition.from(taskDefinitionMirror));
     }
 

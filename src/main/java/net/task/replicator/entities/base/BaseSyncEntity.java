@@ -53,13 +53,12 @@ public abstract class BaseSyncEntity extends BaseEntity {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         BaseSyncEntity that = (BaseSyncEntity) o;
-        return Objects.equals(updatedAt, that.updatedAt) &&
-                Objects.equals(syncUuid, that.syncUuid);
+        return Objects.equals(syncUuid, that.syncUuid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), updatedAt, syncUuid);
+        return Objects.hash(super.hashCode(), syncUuid);
     }
 
     @Override
