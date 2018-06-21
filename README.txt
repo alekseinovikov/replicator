@@ -16,6 +16,9 @@ Requirements:
 ·        Tests should be included. Tests should prove your solution works.
 ·        Please use H2 database
 
-Remarks:
-* Nothing was said about AUTO_INCREMENT on primary key
 
+Solution description:
+Similar problems are solved with triggers (in one DB) or with internal DB mechanisms (replication).
+So, I've implemented my solution using 2 additional columns for both tables: sync_uuid and updated_at:
+The first column is identifier that helps to determine if the row has been already replicated before and helps to find match in the other table.
+The second column is just a timestamp that updates automatically on insert and update a row. It helps to find which row contains the most actual data.
